@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!-- -->
+<!-- JBoss 7 Server Configuration -->
+<!-- -->
+<!-- ===================================================================== -->
+<!-- $Id: oracle-ds.xml,v 1.1.2.2 2003/04/01 04:51:12 d_jencks Exp $ -->
+<!-- ==================================================================== -->
+<!-- Datasource config for Oracle originally from Steven Coy -->
+<!-- ==================================================================== -->
+<!-- With Refrence To Pivotpathoracle.ds from JSDN 5.9 -->
+<!-- ==================================================================== -->
+<!-- Written by sjha@jamcracker.com -->
+<!-- ==================================================================== -->
+
+
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema">
+	<datasource jndi-name="java:/iPool" enabled="true" use-java-context="true" pool-name="iPool">
+		<connection-url>jdbc:postgresql://localhost:5432/ischool?stringtype=unspecified</connection-url>
+		<driver>postgresql</driver>
+		<security>
+			<user-name>ischool_admin</user-name>
+			<password>ischool_admin</password>
+		</security>
+		<pool>
+			<min-pool-size>10</min-pool-size>
+			<max-pool-size>300</max-pool-size>
+		</pool>
+		<timeout>
+			<idle-timeout-minutes>15</idle-timeout-minutes>
+		</timeout>
+		<validation>
+			<valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter" />
+			<validate-on-match>false</validate-on-match>
+			<background-validation>true</background-validation>
+			<exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter" />
+		</validation>
+	</datasource>
+</datasources>
+
